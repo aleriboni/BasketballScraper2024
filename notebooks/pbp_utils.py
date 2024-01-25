@@ -1,14 +1,31 @@
 import math
 import mapping_utils
 import requests
+import re
 import json
 from typing import Dict, List
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 from datetime import timedelta
+from selenium import webdriver
 
 IN_SUB_STRING = 'Ingresso'
 OUT_SUB_STRING = 'Uscita'
+
+
+def retrieve_auth_bearer() -> str:
+
+    options = webdriver.ChromeOptions()
+    options.set_capability('goog:loggingPrefs', {"performance": "ALL"})
+    driver = webdriver.Chrome(options=options)
+
+    driver.get("https://www.legabasket.it/game/24095/pbp/play-by-play?period=3")
+    logs = driver.get_log("performance")
+    for entry in logs:
+        if "Bearer" in str(entry["message"]):
+            token = re.search('Bearer [^"]*', str(entry["message"])).group(0)
+            #print(f"Auth token: {token}")
+            return token
 
 def retrieve_info(url: str, auth: str):
 
