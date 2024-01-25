@@ -100,11 +100,21 @@ dependencies:
   - zlib=1.2.13=h4dc903c_0
   - pip:
       - distlib==0.3.8
+      - exceptiongroup==1.2.0
       - filelock==3.13.1
+      - h11==0.14.0
       - lxml==4.8.0
+      - outcome==1.3.0.post0
       - platformdirs==2.6.2
       - pyyaml==6.0
       - requests-toolbelt==0.9.1
+      - selenium==4.17.2
+      - sniffio==1.3.0
+      - sortedcontainers==2.4.0
       - tqdm==4.64.0
+      - trio==0.24.0
+      - trio-websocket==0.11.1
+      - typing-extensions==4.9.0
       - virtualenv==20.16.5
+      - wsproto==1.2.0
 prefix: /Users/alessandro/miniconda3/envs/BasketballScraper2024
